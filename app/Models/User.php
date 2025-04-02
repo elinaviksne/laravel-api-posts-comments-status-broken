@@ -51,10 +51,10 @@ class User extends Authenticatable
         return $this->hasMany(Post::class);
     }
 
-    // public function comments()
-    // {
-    //     return $this->hasMany(Comment::class);
-    // }
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
 
 
 
@@ -62,5 +62,5 @@ class User extends Authenticatable
 
 
 
-    // 1|16P65K1IlC5IskbyVlWYrwkcAHYtxKx9OBv711Mad3df6d47
+    // 1|BrhoEejzq8ScRqMIc9qSAx1pxru7M33LwnGYdnvee7d68676
 }

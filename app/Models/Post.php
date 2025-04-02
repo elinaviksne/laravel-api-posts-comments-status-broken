@@ -13,16 +13,16 @@ class Post extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->belongsTo(User::class);
     }
 
     public function status()
     {
-        return $this->belongsTo(PostStatus::class, 'post_status_id');
+        return $this->belongsTo(PostStatus::class);
     }
 
-    // public function comments()
-    // {
-    //     return $this->hasMany(Comment::class);
-    // }
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
 }

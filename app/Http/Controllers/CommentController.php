@@ -11,14 +11,16 @@ use Illuminate\Support\Facades\Gate;
 
 class CommentController extends Controller implements HasMiddleware
 {
-    public static function middleware() {
+    public static function middleware()
+    {
         return [
             new Middleware('auth:sanctum', except: ['index'])
         ];
     }
 
-    public function index()
+    public function index($post_id)
     {
+        $post = Post::with('comments')->find($post_id);
         return response()->json($post->comments);
     }
 
@@ -27,7 +29,8 @@ class CommentController extends Controller implements HasMiddleware
         $request->validate(['content' => 'required|string']);
 
         $comment = $post->comments()->create([
-            'content' => $request->content
+            'content' => $request->content,
+            'user_id' => $request->user()->id,
         ]);
 
         return response()->json($comment, 201);
